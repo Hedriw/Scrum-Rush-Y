@@ -13,19 +13,22 @@
 	if(isset($_SESSION['user_session_id']))
 	{
 		echo("Bonjour ".$_SESSION['user_session_civ']." ".$_SESSION['user_session_nom']." ".$_SESSION['user_session_prenom']);
+		echo '<form action="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion">';
+		echo '<input type="submit" value="Deconnexion" />';
+		echo '</form>';
 	}
 	else
 	{
-		echo("Non connecté");
+		echo '<form action="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion">';
+		echo '<input type="submit" value="Connexion" />';
+		echo '</form>';
 	}
 	?>
 	</br>
 
-	<form action="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion">
-    <input type="submit" value="Connexion" />
-	</form>
 
-	//<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion>Se connecter</a>
+	
+
 	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research>Rechercher une vidéo</a>
 	
 

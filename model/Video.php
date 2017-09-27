@@ -15,7 +15,7 @@ class Video extends Model {
 	protected $_vid_publiclegal;
 	protected $_vid_urlphoto;
 	protected $_vid_prixttc;
-	protected $vid_codebarre;
+	protected $_vid_codebarre;
 	protected $_vid_stock;
 	
 	public function __toString() {

@@ -16,16 +16,12 @@ class Controller {
 			if(isset($_SESSION['user_session_id']))
 		{
 			$connectData = " Bonjour ".$_SESSION['user_session_civ']." ".$_SESSION['user_session_nom']." ".$_SESSION['user_session_prenom'];
-			/*$connectData = $connectData.'<button onclick="http://srv-tpinfo/G246/Scrum-Rush-Y/controller/ConnexionController.php.logout()">Deconnexion</button>';*/
-			$connectData = $connectData.'<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion/logout>Deconnexion</a>';
+			$connectData = $connectData.'<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion/logout" class="button">Deconnexion</a>';
 		}
 		else
 		{
-			/*$connectData = "Non connecté";
-			$connectData = $connectData.'<form action="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion">';
-			$connectData = $connectData.'<input type="submit" value="Connexion" />';
-			$connectData = $connectData.'</form>';*/
-			$connectData = '<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion>Se connecter</a>';
+			$connectData = $connectData.'&nbsp<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion" class="button" >Se connecter</a>';
+			
 		}
 
 		include_once "view/header.php";

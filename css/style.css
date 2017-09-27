@@ -1,0 +1,12 @@
+a.button {
+    display: block;
+    width: 100px;
+    height: 20px;
+    background: #33cc33;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
+

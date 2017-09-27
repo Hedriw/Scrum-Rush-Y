@@ -1,1 +1,1 @@
-<h1>Bienvenue sur la FNAC</h1>
+<h1>Accueil</h1>

@@ -5,16 +5,52 @@ class ConnexionController extends Controller{
 		
 	}
 	
+	/*function console($data) 
+	{
+		echo("<script>console.log('PHP: ".$data."');</script>");
+	}*/
+
+	public function login($uname,$umail,$upass)
+	{
+		//$this->console("pseudo : ".$uname." email : ".$umail." password : ".$upass);
+		try
+		{
+			$stmt = db()->prepare("SELECT * FROM t_e_acheteur_ach WHERE ach_pseudo=:uname OR ach_mel=:umail LIMIT 1");
+			$stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
+			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+			//$this->console("row :".$stmt->rowCount());
+			if($stmt->rowCount() == 1)
+			{
+            //if(password_verify($upass, $userRow['ach_motpasse']))
+				if($upass==$userRow['ach_motpasse'])
+				{
+					$_SESSION['user_session_id'] = $userRow['ach_id'];
+					$_SESSION['user_session_civ'] = $userRow['ach_civilite'];
+					$_SESSION['user_session_nom'] = $userRow['ach_nom'];
+					$_SESSION['user_session_prenom'] = $userRow['ach_prenom'];
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();
+		}
+	}
 	
-	public function index(){
+	public function index()
+	{
 		if (isset(parameters()["id"]) && isset(parameters()["mdp"]))
 		{
-			if (parameters()["mdp"]=="123"&&parameters()["id"]=="blublu")
-			{	
-				parameters()["r"]="";
-				parameters()["id"]="";
-				parameters()["mdp"]="";
-				header('Location:.');
+			//$hashPW = password_hash(parameters()["mdp"]), PASSWORD_DEFAULT);
+			$hashPW = parameters()["mdp"];
+			if($this->login(parameters()["id"],parameters()["id"],$hashPW))
+			{
+				header("Location:.");    
 			}
 			else
 			{
@@ -25,6 +61,15 @@ class ConnexionController extends Controller{
 		else
 			$this->render("index");
 	}
+
+	public function logout()
+	{
+		session_destroy();
+        unset($_SESSION['user_session']);
+        return true;
+	}
+
+
 	public function about(){
 		$this->render("about");
 	}

@@ -17,7 +17,7 @@
 <label>Mot de passe</label> : <input type="password" id="ACH_MOTPASSE" name="mdp" placeholder="Mot de passe"/>
 </br>
 </br>
-<input type="radio" id="ACH_CIVILITE" name="genre" value="M"> <label>M</label>
+<input type="radio" id="ACH_CIVILITE" name="genre" value="M."> <label>M</label>
 <input type="radio" id="ACH_CIVILITE" name="genre" value="Mme"> <label>Mme</label>
 <input type="radio" id="ACH_CIVILITE" name="genre" value="Mlle"> <label>Mlle</label>
 </br>

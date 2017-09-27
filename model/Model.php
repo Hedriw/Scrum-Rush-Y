@@ -1,6 +1,5 @@
 <?php
 
-
 class Model {
 	public function __construct($id=null) {
 		$table = $this->_table;
@@ -9,8 +8,8 @@ class Model {
 			$st = db()->prepare("insert into $table default values returning $nameid");
 			$st->execute();
 			$row = $st->fetch();
-			$field = "id".$table;
-			$this->$field = $row[$field];
+			print_r($row);
+			$this->$nameid = $row[$nameid];
 		} else {
 			$st = db()->prepare("select * from $table where $nameid=:id");
 			$st->bindValue(":id", $id);
@@ -70,7 +69,7 @@ class Model {
 					$id = substr($id, 1);
 					$st->bindValue(":val", $value->$id);
 				} else {
-					$st = db()->prepare("update $table set $id=:val where $id=:id");
+					$st = db()->prepare("update $table set $fieldName=:val where $id=:id");
 					$st->bindValue(":val", $value);
 				}
 				$id = $this->_nameid;

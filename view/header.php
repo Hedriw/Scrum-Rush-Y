@@ -20,7 +20,12 @@
 	}
 	?>
 	</br>
-	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion>Se connecter</a>
+
+	<form action="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion">
+    <input type="submit" value="Connexion" />
+	</form>
+
+	//<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion>Se connecter</a>
 	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research>Rechercher une vidéo</a>
 	
 

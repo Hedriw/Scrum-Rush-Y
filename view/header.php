@@ -8,10 +8,6 @@
 <body>
 	<main>
 	<header>
-	<a href=http://srv-peda.iut-acy.local/verony/M3104/Scrum/?r=connexion>Se connecter</a>
-	<a href=http://srv-peda.iut-acy.local/verony/M3104/Scrum/?r=research>Rechercher une vidéo</a>
-	
-
 	
 	<?php
 	if(isset($_SESSION['user_session_id']))
@@ -23,6 +19,12 @@
 		echo("Non connecté");
 	}
 	?>
+	</br>
+	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion>Se connecter</a>
+	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research>Rechercher une vidéo</a>
+	
+
+	
 	</header>
 	<nav>
 	</nav>

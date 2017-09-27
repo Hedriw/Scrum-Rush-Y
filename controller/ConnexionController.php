@@ -65,8 +65,8 @@ class ConnexionController extends Controller{
 	public function logout()
 	{
 		session_destroy();
-        unset($_SESSION['user_session']);
-        return true;
+        unset($_SESSION['user_session_id'],$_SESSION['user_session_civ'],$_SESSION['user_session_prenom'],$_SESSION['user_session_nom']);
+        header('Location: .');
 	}
 
 

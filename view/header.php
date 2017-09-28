@@ -15,14 +15,8 @@
 	</a>
 	<br>
 	<?php
-	
 	echo $connectData;
 	?>
-	</br>
-
-
-	
-
 	
 	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research>Rechercher une vidéo</a>
 	

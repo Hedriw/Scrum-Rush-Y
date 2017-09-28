@@ -3,8 +3,8 @@
 class Video extends Model {
 
 	
-	protected $_table="t_e_video_vid";
-	protected $_nameid="vid_id";
+	public static $_table="t_e_video_vid";
+	public static $_nameid="vid_id";
 	protected $_vid_id;
 	protected $_for_id;
 	protected $_rea_id;

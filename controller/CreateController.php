@@ -16,9 +16,11 @@ class CreateController extends Controller{
 			$user->ach_prenom = parameters()["prenom"];
 			$user->ach_telfixe= parameters()["fixe"];
 			$user->ach_telportable= parameters()["portable"];
-			$user->ach_mag=parameters()["magasin"];
+			$user->mag_id=intval(parameters()["magasin"]);
+			$this->render("add",$user);
 		} else {
-			$this->render("add");
+			$error="Un champs est vide.";
+			$this->render("index",$error);
 		}
 	}
 		

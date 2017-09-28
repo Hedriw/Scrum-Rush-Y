@@ -10,13 +10,13 @@ class ResearchController extends Controller{
 							"realisateur"=>"Select DISTINCT t_e_video_vid.vid_id from t_e_video_vid 
 												join t_e_realisateur_rea on (t_e_video_vid.rea_id=t_e_realisateur_rea.rea_id)
 												where LOWER(t_e_realisateur_rea.rea_nom) like",
-							"realisateurvide"=>"Select t_e_video_vid.vid_id from t_e_video_vid 
+							"realisateurvide"=>"Select DISTINCT t_e_video_vid.vid_id from t_e_video_vid 
 												join t_e_realisateur_rea on (t_e_video_vid.rea_id=t_e_realisateur_rea.rea_id) 
-												order by rea_nom",
-							"acteurvide"=>"Select t_e_video_vid.vid_id from t_e_video_vid
+												",
+							"acteurvide"=>"Select DISTINCT t_e_video_vid.vid_id from t_e_video_vid
 											join t_j_acteurvideo_acv on (t_e_video_vid.vid_id =t_j_acteurvideo_acv.vid_id)
 											join t_e_acteur_act on (t_j_acteurvideo_acv.act_id = t_e_acteur_act.act_id)
-											order by t_e_acteur_act.act_nom"
+											"
 	);
 		
 	}
@@ -38,12 +38,12 @@ class ResearchController extends Controller{
 			$st= db()->prepare($sql);
 			$st->execute();
 			$row = $st->fetch(PDO::FETCH_ASSOC);
-			if(!empty($row))
+			if($st->execute())
 			{
 				$videos=array();
-				foreach($row as $field=>$value)
+				while($row=$st->fetch(PDO::FETCH_ASSOC))
 				{
-					$videos[$value]=new Video($value);
+					$videos[]=new Video($row["vid_id"]);
 				}
 				$this->render("index",$videos);
 			}
@@ -53,9 +53,9 @@ class ResearchController extends Controller{
 				$this->render("index",$error);
 			}
 		}
-		else if(!isset(parameters()["typesearch"]))
+		else if(empty(parameters()["typesearch"])&&!empty(parameters()["keyword"]))
 		{
-			$error="Veuillez choisir un type de recherche";
+			$error=array("error"=>"Veuillez choisir un type de recherche");
 			$this->render("index",$error);
 		}
 		else

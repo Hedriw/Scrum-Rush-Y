@@ -19,7 +19,8 @@
 	?>
 
 	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research class="button">Rechercher une vidéo</a>
-	
+	<br>
+	<br>
 
 	
 	</header>

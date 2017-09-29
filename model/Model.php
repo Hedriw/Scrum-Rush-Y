@@ -4,8 +4,9 @@ class Model {
 	private static $_linkedclass = array(
 	"rea"=>"Realisateur",
 	"for"=>"Format",
-	"mag"=>"Magasin"
-	
+	"mag"=>"Magasin",
+	"ach"=>"User",
+	"pay"=>"Pays"
 	
 	);
 	public function __construct($id=null) {

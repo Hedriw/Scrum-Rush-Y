@@ -11,14 +11,14 @@
 	<header>
 	
 	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/>
-	<img src="http://srv-tpinfo/G246/Scrum-Rush-Y/ressources/banner_fnac.jpg" alt="fnac banner";">
+	<img src="http://srv-tpinfo/G246/Scrum-Rush-Y/ressources/bannerFnac2.png" alt="fnac banner" width="100%" ;">
 	</a>
 	<br>
 	<?php
 	echo $connectData;
 	?>
-	
-	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research>Rechercher une vidéo</a>
+
+	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research class="button">Rechercher une vidéo</a>
 	
 
 	

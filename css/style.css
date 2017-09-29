@@ -1,12 +1,45 @@
+/*
+#222831 : Dark grey
+#393E46 : grey
+#00ADB5 : cyan
+#EEEEEE : creme entière;
+*/
+
 a.button {
-    display: block;
-    width: 100px;
+    display: inline-block;
+    width: 150px;
     height: 20px;
-    background: #33cc33;
+    background: #00ADB5;
     padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
     text-align: center;
     border-radius: 5px;
     color: black;
     font-weight: bold;
+
 }
+
+body{
+	background-color: #393E46;
+
+}
+
+main{
+	width: 80%;
+	position: relative;
+	margin: 0px auto;
+	box-shadow: 3px 0px 30px #EEEEEE;
+	background: white;
+
+}
+
+section
+{
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-bottom: 2%;
+}
+
+
 

@@ -1,16 +1,4 @@
-<!DOCTYPE html> 
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Inscription</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-<body>
-<header>
-	<h1>Inscription</h1>
-</header>
 <h2>Mes coordonnées</h2>
-
 <form action="?r=create/add" method="post">
 
 <label>Pseudo</label> : <input id="ACH_PSEUDO" name="pseudo" placeholder="Pseudo" required />
@@ -27,19 +15,6 @@
 </br>
 </br>
 <label>Email</label> : <input type="email" id="ACH_MEL" name="email" placeholder="Email" required />
-</br>
-</br>
-
-<h2>Mon adresse</h2>
-
-<label>Adresse</label> : <input id="ADR_RUE" name="adresse" placeholder="Adresse" required />
-</br>
-</br>
-<label>Complément d'adresse</label> : <input id="ADR_COMPLEMENTRUE" name="cr" placeholder="Complément d'adresse" />
-</br>
-</br>
-<label>Code postal</label> : <input id="ADR_CP" name="cp" placeholder="Code Postal" required />
-<label>Ville</label> : <input id="ADR_VILLE" name="ville" placeholder="Ville" required />
 </br>
 </br>
 <label>Telephone Fixe</label> : <input id="ACH_TELFIXE" name="fixe" placeholder="Telephone"/>
@@ -60,9 +35,36 @@
 		?>
 		</select> 
 
+<h2>Mon adresse (facultatif)</h2>
 
+<label>Adresse</label> : <input id="ADR_RUE" name="adresse" placeholder="Adresse" />
+</br>
+</br>
+<label>Complément d'adresse</label> : <input id="ADR_COMPLEMENTRUE" name="cr" placeholder="Complément d'adresse" />
+</br>
+</br>
+<label>Code postal</label> : <input id="ADR_CP" name="cp" placeholder="Code Postal" required />
+<label>Ville</label> : <input id="ADR_VILLE" name="ville" placeholder="Ville" required />
+</br>
+</br>
+<label>Pays :</label> <select name='pays'>
+<?php
+		
+		foreach(Pays::findAll() as $pays) {
+			echo "<option value=".$pays->pay_id.">";
+				echo $pays->pay_nom;
+			echo "</option>";
+		}
+		
+?>
+		</select> 
+
+</br>
+</br>
 <input value="Inscription" type="submit"/>
 </form>
-
-</body>
-</html>
+<?php
+	echo "</br>";
+	echo $data;
+	echo "</br>";
+?>

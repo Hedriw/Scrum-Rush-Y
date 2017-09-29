@@ -10,13 +10,13 @@ class ConnexionController extends Controller{
 		echo("<script>console.log('PHP: ".$data."');</script>");
 	}*/
 
-	public function login($uname,$umail,$upass)
+	public function login($uname,$upass)
 	{
 		//$this->console("pseudo : ".$uname." email : ".$umail." password : ".$upass);
 		try
 		{
-			$stmt = db()->prepare("SELECT * FROM t_e_acheteur_ach WHERE ach_pseudo=:uname OR ach_mel=:umail LIMIT 1");
-			$stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
+			$stmt = db()->prepare("SELECT * FROM t_e_acheteur_ach WHERE ach_mel=:uname LIMIT 1");
+			$stmt->execute(array(':uname'=>$uname));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			//$this->console("row :".$stmt->rowCount());
 			if($stmt->rowCount() == 1)
@@ -49,13 +49,13 @@ class ConnexionController extends Controller{
 		{
 			//$hashPW = password_hash(parameters()["mdp"]), PASSWORD_DEFAULT);
 			$hashPW = parameters()["mdp"];
-			if($this->login(parameters()["id"],parameters()["id"],$hashPW))
+			if($this->login(parameters()["id"],$hashPW))
 			{
 				header("Location:.");    
 			}
 			else
 			{
-				$this->render("index","Mauvais identifiant ou mdp");
+				$this->render("index","Adresse mail ou Mot de passe invalide");
 			}	
 			
 		}

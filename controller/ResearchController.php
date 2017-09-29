@@ -45,11 +45,19 @@ class ResearchController extends Controller{
 				{
 					$videos[]=new Video($row["vid_id"]);
 				}
-				$this->render("index",$videos);
+				if(empty($videos))
+				{
+					$error=array("error"=>"Aucune vidéo à été trouvé");
+					$this->render("index",$error);
+				}
+				else
+				{
+					$this->render("index",$videos);
+				}	
 			}
 			else
 			{
-				$error = "Aucune vidéo à été trouvé";
+				$error=array("error"=>"Aucune vidéo à été trouvé");
 				$this->render("index",$error);
 			}
 		}

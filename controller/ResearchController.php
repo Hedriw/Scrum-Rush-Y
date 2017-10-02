@@ -28,7 +28,7 @@ class ResearchController extends Controller{
 			$sql="";
 			if(!empty(parameters()["keyword"])&& parameters()["keyword"]!="")
 			{
-				$sql=$this->requests[parameters()["typesearch"]]." lower('".parameters()["keyword"]."%')";
+				$sql=$this->requests[parameters()["typesearch"]]." lower('%".parameters()["keyword"]."%')";
 			}
 			else
 			{

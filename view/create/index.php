@@ -43,8 +43,8 @@
 <label>Complément d'adresse</label> : <input id="ADR_COMPLEMENTRUE" name="cr" placeholder="Complément d'adresse" />
 </br>
 </br>
-<label>Code postal</label> : <input id="ADR_CP" name="cp" placeholder="Code Postal" required />
-<label>Ville</label> : <input id="ADR_VILLE" name="ville" placeholder="Ville" required />
+<label>Code postal</label> : <input id="ADR_CP" name="cp" placeholder="Code Postal"  />
+<label>Ville</label> : <input id="ADR_VILLE" name="ville" placeholder="Ville"  />
 </br>
 </br>
 <label>Pays :</label> <select name='pays'>

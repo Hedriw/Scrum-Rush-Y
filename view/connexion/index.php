@@ -7,7 +7,7 @@
 	<input type="submit" value="Se connecter">
 	</form>
 	</br>
-	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=create>Create an account</a>
+	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=create>Créer un compte client</a>
 <?php
 	echo $data;
 ?>

@@ -17,11 +17,11 @@ class Controller {
 		{
 			$connectData = " Bonjour ".$_SESSION['user_session_civ']." ".$_SESSION['user_session_nom']." ".$_SESSION['user_session_prenom'];
 			$connectData = $connectData.'<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion/logout" class="button">Deconnexion</a>';
+			$connectData = $connectData.'<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion/modification" class="button">Modifier mon compte</a>';
 		}
 		else
 		{
-			$connectData = $connectData.'&nbsp<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion" class="button" >Se connecter</a>';
-			
+			$connectData = $connectData.'&nbsp<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion" class="button" >Se connecter</a>';	
 		}
 
 		include_once "view/header.php";
@@ -32,9 +32,6 @@ class Controller {
 		$data = $d;
 
 		
-
-
-
 		include_once "view/".strtolower($model)."/".$view.".php";
 		// view/site/index.php
 

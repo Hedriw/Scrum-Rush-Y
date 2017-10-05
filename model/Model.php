@@ -6,10 +6,12 @@ class Model {
 	"for"=>"Format",
 	"mag"=>"Magasin",
 	"ach"=>"User",
-	"pay"=>"Pays"
+	"pay"=>"Pays",
+	"vid"=>"Video"
 	
 	);
 	public function __construct($id=null) {
+		
 		$class = get_called_class();
 		$table = $class::$_table;
 		$nameid= $class::$_nameid;
@@ -22,10 +24,6 @@ class Model {
 			$st = db()->prepare("select * from $table where $nameid=:id");
 			$st->bindValue(":id", $id);
 			$st->execute();
-			// echo "select * from $table where $nameid=$id";
-			// echo "</br>";
-			// echo $st->rowCount();
-			// echo "</br>";
 			if ($st->rowCount() != 1) {
 				throw new Exception("Not in table: ".$table." id: ".$id );
 			} else {
@@ -33,7 +31,6 @@ class Model {
 				foreach($row as $field=>$value) {
 					if (substr($field,strlen($field)-2 ,strlen($field)) == "id"&& $field !=$nameid) {
 						$linkedField = substr($field,0,3);
-						// echo $linkedField."</br>";
 						$linkedClass = Model::$_linkedclass[$linkedField] ;
 						if ($linkedClass != get_class($this))
 							
@@ -73,7 +70,6 @@ class Model {
 			throw new Exception("Unknown variable: ".$fieldName);
 	}
 
-
 	public function __set($fieldName, $value) {
 		$varName = "_".$fieldName;
 		if ($value != null) {
@@ -97,8 +93,6 @@ class Model {
 				throw new Exception("Unknown variable: ".$fieldName);
 		}
 	}
-
-	
 
 
 

@@ -34,6 +34,7 @@ if(empty($data["error"])&&!empty($data))
 			</br>
 			</br>
 			Prix TTC : ".$video->vid_prixttc." €
+			<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=consulte&id=".$video->vid_id." class='button'>Consulter la vidéo</a>
 		</fieldset>
 		</br>";
 		

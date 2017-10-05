@@ -13,4 +13,8 @@ class User extends Model{
 	protected $_ach_telfixe;
 	protected $_ach_telportable;
 	protected $_mag_id;
+	
+	public function __toString() {
+		return get_class($this).":".$this->_ach_id;
+	}
 }

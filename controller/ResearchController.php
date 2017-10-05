@@ -25,6 +25,7 @@ class ResearchController extends Controller{
 	public function index(){
 		if (isset(parameters()["typesearch"]) && isset(parameters()["keyword"]))
 		{
+			print_r(parameters());
 			$sql="";
 			if(!empty(parameters()["keyword"])&& parameters()["keyword"]!="")
 			{

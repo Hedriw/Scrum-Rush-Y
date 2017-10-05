@@ -23,7 +23,7 @@ class ConnexionController extends Controller{
 			{
             //if(password_verify($upass, $userRow['ach_motpasse']))
 
-				if($upass==$userRow['ach_motpasse'] )
+				if(md5($upass)==$userRow['ach_motpasse'] )
 				{
 					$_SESSION['user_session_id'] = $userRow['ach_id'];
 					$_SESSION['user_session_civ'] = $userRow['ach_civilite'];

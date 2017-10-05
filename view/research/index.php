@@ -33,7 +33,7 @@ if(empty($data["error"])&&!empty($data))
 			Format : ".$video->for_id->for_libelle."
 			</br>
 			</br>
-			Prix TTC : ".$video->vid_prixttc."
+			Prix TTC : ".$video->vid_prixttc." €
 		</fieldset>
 		</br>";
 		

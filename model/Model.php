@@ -50,7 +50,7 @@ class Model {
 		$class = get_called_class();
 		$table = $class::$_table;
 		$idname= $class::$_nameid;
-		$st = db()->prepare("select $idname from $table");
+		$st = db()->prepare("select $idname from $table order by $idname");
 		$st->execute();
 		$list = array();
 		while($row = $st->fetch(PDO::FETCH_ASSOC)) {

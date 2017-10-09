@@ -1,12 +1,38 @@
 <form action="index.php">
 <input type="hidden" name="r" id="r" value="research"></br>
 
-<input type="radio" name="typesearch" id="realisateur" value="realisateur">
+<input class='real' input type="radio" name="typesearch" id="realisateur" value="realisateur" <?php if(!empty($data["typesearch"])&&$data["typesearch"]=="realisateur"){echo "checked";} ?>>
 <label for="realisateur">Réalisateur</label>
-<input type="radio" name="typesearch" id="acteur" value="acteur">
-<label for="acteur">Acteur </label><br>
+<input class='acteur' input type="radio" name="typesearch" id="acteur" value="acteur" <?php if(!empty($data["typesearch"])&&$data["typesearch"]=="acteur"){echo "checked";} ?>>
+<label for="acteur">Acteur </label>
+<input class='classm' input type="radio" name="typesearch" id="classement" value="classement" <?php if(!empty($data["typesearch"])&&$data["typesearch"]=="classement"){echo "checked";} ?>>
+<label for="classement">Classement </label><br>
+<div class='rech_cach'>
 <label for="keyword">Mot clef :</label><br>
-<input type="text" name="keyword" id="keyword" ><br><br>
+<input type="text" name="keyword" id="keyword" value='<?php if(!empty($data["keyword"])){echo $data["keyword"];} ?>'><br><br>
+</div>
+<div class='val_type_form'>
+<label>Classement :</label> <select name='classement'>
+		<?php
+		
+		foreach(Classement::findAll() as $classement) 
+		{
+			if($data["classement"]==$classement->cla_id)
+			{
+				echo "<option value='".$classement->cla_id."' selected>";
+			}
+			else
+			{
+				echo "<option value=".$classement->cla_id.">";				
+			}			
+			echo $classement->cla_nom;
+			echo "</option>";
+			
+		}
+		
+		?>
+</select> 
+</div>
 <input type="submit" value="Rechercher">
 </form>
 </br>
@@ -15,7 +41,7 @@
 // print_r($data);
 if(empty($data["error"])&&!empty($data))
 {
-	foreach($data as $video )
+	foreach($data["videos"] as $video )
 	{
 		echo "<fieldset>
 			Titre : ".$video->vid_titre."

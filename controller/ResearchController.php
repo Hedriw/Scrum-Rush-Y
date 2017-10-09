@@ -12,7 +12,7 @@ class ResearchController extends Controller{
 												where LOWER(t_e_realisateur_rea.rea_nom) like",
 							"classement"=>"Select DISTINCT t_e_video_vid.vid_id from t_e_video_vid 
 												join t_j_classementvideo_clv on (t_e_video_vid.vid_id=t_j_classementvideo_clv.vid_id)
-												where cla.id =",
+												where t_j_classementvideo_clv.cla_id =",
 							"realisateurvide"=>"Select DISTINCT t_e_video_vid.vid_id from t_e_video_vid 
 												join t_e_realisateur_rea on (t_e_video_vid.rea_id=t_e_realisateur_rea.rea_id) 
 												",
@@ -30,7 +30,13 @@ class ResearchController extends Controller{
 		{
 			// print_r(parameters());
 			$sql="";
-			if(!empty(parameters()["keyword"])&& parameters()["keyword"]!="")
+			$data=parameters();
+			if(parameters()["typesearch"]=="classement")
+			{
+				$sql=$this->requests[parameters()["typesearch"]].parameters()["classement"];
+				// echo $sql;
+			}
+			else if(!empty(parameters()["keyword"])&& parameters()["keyword"]!="")
 			{
 				$sql=$this->requests[parameters()["typesearch"]]." lower('%".parameters()["keyword"]."%')";
 			}
@@ -51,12 +57,13 @@ class ResearchController extends Controller{
 				}
 				if(empty($videos))
 				{
-					$error=array("error"=>"Aucune vidéo à été trouvé");
-					$this->render("index",$error);
+					$data["error"]="Aucune vidéo à été trouvé";
+					$this->render("index",$data);
 				}
 				else
 				{
-					$this->render("index",$videos);
+					$data["videos"]=$videos;
+					$this->render("index",$data);
 				}	
 			}
 			else

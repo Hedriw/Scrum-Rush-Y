@@ -2,9 +2,9 @@
 // print_r($data);
 if(!empty($data["videos"]))
 {
-	echo "<h1>La vidéo</h1>";
-		echo "<fieldset>
-			Titre : ".$data["videos"]->vid_titre."
+	echo "<h1 class='midTitle'>La vidéo :</h1>";
+		echo "<p class='vid'>
+			<smallTitle class='titre'>".$data["videos"]->vid_titre."</smallTitle> 
 			</br>
 			</br>
 			Duree : ".$data["videos"]->vid_duree."
@@ -30,15 +30,15 @@ if(!empty($data["videos"]))
 			</br>
 			</br>
 			</br>
-		</fieldset>
+		</p>
 		</br>";
 }
 if(!empty($data["avis"]))
 {
-		echo "<h1>Les Avis :</h1>";
+		echo "<h1 class='midTitle'>Les Avis :</h1>";
 		foreach($data["avis"] as $avis)
 		{
-			echo "<fieldset>
+			echo "<fieldset class='avis'>
 			<h2>".$avis->avi_titre."</h2>
 			Note :".$avis->avi_note."
 			</br>

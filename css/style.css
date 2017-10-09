@@ -5,64 +5,101 @@
 #EEEEEE : creme entière;
 */
 
-a.button {
-    display: inline-block;
-    width: 150px;
-    height: 20px;
-    background: #00ADB5;
-    padding: 10px;
-    margin-left: 10px;
-    margin-top: 10px;
-    text-align: center;
-    border-radius: 5px;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 1px 0 #ccc,
-               0 2px 0 #c9c9c9,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px #00ADB5;
-
+.mui-tabs__bar > li > a:hover {
+  cursor: pointer;
+  /*background-color: #2196F3;
+  color: #EEEEEE;*/
+  border-color: #2196F3;
+  border-width: 10px;
 }
 
-div.customFooter{
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-right: 5px;
-	text-align: right;
-	color: lime;
-	background-color: #222831;
-
-}
-
-/*body{
-	background-color: #393E46;
-
-}*/
-
-main{
-	width: 80%;
-	position: relative;
-	margin: 0px auto;
-	box-shadow: 3px 0px 30px #EEEEEE;
-	background: white;
-
-}
-
-section
+.list
 {
-	padding-left: 2%;
-	padding-right: 2%;
-	padding-bottom: 2%;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  border-color: #2196F3;
+  
+
+}
+.mui-tabs__bar > li > a {
+  
+  }
+
+.customFooter{
+  /*position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;*/
+  background-color: #393E46;
+  text-align: right;
+  color: lime;
+
+  -webkit-animation: footerBlink 1s infinite;  /* Safari 4+ */
+  -moz-animation: footerBlink 1s infinite;  /* Fx 5+ */
+  -o-animation: footerBlink 1s infinite;  /* Opera 12+ */
+  animation: footerBlink 1s infinite;  /* IE 10+, Fx 29+ */
 }
 
+@-webkit-keyframes footerBlink {
+  0%, 49% {
+    color : lime;
+  }
+  50%, 100% {
+    color : orange;
+  }
+}
 
+.val_type_form
+{
+display : none;
+}
 
+.rech_cach
+{
+	display : none;
+}
+.headerTitle
+{
+  background-color: #222831;
+  color: #EEEEEE;
+}
+section{
+  padding-left: 25px;
+}
+
+body{
+  background-color: #222831;
+  color: #EEEEEE;
+}
+
+.vid
+{
+  border-color: grey;
+  border-width: 5px;
+  border-style: solid;
+}
+
+.avis
+{
+  border-color: grey;
+  border-width: 5px;
+  border-style: solid;
+}
+
+.midTitle
+{
+  background-color: #222831;
+  color :#EEEEEE;
+}
+
+smallTitle
+{
+font-size: 20px;
+font-weight: bold;
+}
+smallTitle.titre
+{
+  text-decoration: underline;
+  text-align: center;
+}

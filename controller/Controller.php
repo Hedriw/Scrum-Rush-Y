@@ -12,16 +12,22 @@ class Controller {
 	public function render($view, $d=null) {
 		global $data;
 		global $connectData;
+		global $user_info;
 
+		$connectData="";
 		if(isset($_SESSION['user_session_id']))
 		{
-			$connectData = " Bonjour ".$_SESSION['user_session_civ']." ".$_SESSION['user_session_nom']." ".$_SESSION['user_session_prenom'];
-			$connectData = $connectData.'<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion/logout" class="mui-btn mui-btn--primary">Deconnexion</a>';
-			$connectData = $connectData.'<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion/modification" class="mui-btn mui-btn--primary">Modifier mon compte</a>';
+			
+			$connectData = $connectData.'<li class="hvr-underline-from-center"><a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion/logout data-mui-toggle="tab" data-mui-controls="pane-justified-1"> Deconnexion</a></li>';//<!--class="mui--is-active" in li-->
+			$connectData = $connectData.'<li class="hvr-underline-from-center"><a href = "http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion/modification" data-mui-toggle="tab" data-mui-controls="pane-justified-1">Modifier mon compte</a></li>';
+			$user_info = "Bonjour ".$_SESSION["user_session_civ"]." ".$_SESSION["user_session_nom"]." ".$_SESSION["user_session_prenom"];
+
+			
+
 		}
 		else
 		{
-			$connectData = $connectData.'&nbsp<a href="http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion" class="mui-btn mui-btn--primary" >Se connecter</a>';	
+			$connectData = $connectData.'<li class="hvr-underline-from-center"><a href = "http://srv-tpinfo/G246/Scrum-Rush-Y/?r=connexion" data-mui-toggle="tab" data-mui-controls="pane-justified-1">Se Connecter</a></li>';
 		}
 
 		include_once "view/header.php";

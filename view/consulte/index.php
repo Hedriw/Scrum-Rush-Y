@@ -1,8 +1,8 @@
 <?php 
 // print_r($data);
-if(empty($data["error"])&&!empty($data))
+if(!empty($data["videos"]))
 {
-		echo "<h1>La vidéo</h1>";
+	echo "<h1>La vidéo</h1>";
 		echo "<fieldset>
 			Titre : ".$data["videos"]->vid_titre."
 			</br>
@@ -32,6 +32,9 @@ if(empty($data["error"])&&!empty($data))
 			</br>
 		</fieldset>
 		</br>";
+}
+if(!empty($data["avis"]))
+{
 		echo "<h1>Les Avis :</h1>";
 		foreach($data["avis"] as $avis)
 		{

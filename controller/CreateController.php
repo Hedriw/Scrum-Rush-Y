@@ -15,15 +15,18 @@ class CreateController extends Controller{
 			$row = $st->fetch();
 			if($row == null)
 			{
-				if(preg_match("/^[0]{1}[0-9]{9}$/",parameters()["fixe"])&&preg_match("/^[0]{1}[0-9]{9}$/",parameters()["portable"])) 
+				if(preg_match("/^[0]{1}[0-9]{9}$/",parameters()["fixe"])&&preg_match("/^[0]{1}[0-9]{9}$/",parameters()["portable"])||
+				(preg_match("/^[0]{1}[0-9]{9}$/",parameters()["fixe"])&&empty(parameters()["portable"]))||
+				(preg_match("/^[0]{1}[0-9]{9}$/",parameters()["portable"])&&empty(parameters()["fixe"]))) 
 				{
+					
 				
 					$user = new User();
 					$address = new Address();
 					$user->ach_pseudo = parameters()["pseudo"];
 					$user->ach_mel = parameters()["email"];
-					$user->ach_motpasse = md5(parameters()["mdp"]);
-					$user->ach_civilite = parameters()["genre"];
+					$user->ach_motpasse =md5(parameters()["mdp"]);
+					$user->ach_civilite =parameters()["genre"];
 					$user->ach_nom = parameters()["nom"];
 					$user->ach_prenom = parameters()["prenom"];
 					$user->ach_telfixe= parameters()["fixe"];

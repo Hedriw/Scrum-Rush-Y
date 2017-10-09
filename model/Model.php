@@ -83,8 +83,7 @@ class Model {
 					$id = substr($id, 1);
 					$st->bindValue(":val", $value->$id);
 				} else {
-					$st = db()->prepare("update $table set $fieldName=:val where $id=:id");
-					$st->bindValue(":val", $value);
+					$st = db()->prepare("update $table set $fieldName='".pg_escape_string($value)."' where $id=:id");
 				}
 				$id = $class::$_nameid;
 				$st->bindValue(":id", $this->$id);

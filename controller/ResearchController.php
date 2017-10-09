@@ -10,6 +10,9 @@ class ResearchController extends Controller{
 							"realisateur"=>"Select DISTINCT t_e_video_vid.vid_id from t_e_video_vid 
 												join t_e_realisateur_rea on (t_e_video_vid.rea_id=t_e_realisateur_rea.rea_id)
 												where LOWER(t_e_realisateur_rea.rea_nom) like",
+							"classement"=>"Select DISTINCT t_e_video_vid.vid_id from t_e_video_vid 
+												join t_j_classementvideo_clv on (t_e_video_vid.vid_id=t_j_classementvideo_clv.vid_id)
+												where cla.id =",
 							"realisateurvide"=>"Select DISTINCT t_e_video_vid.vid_id from t_e_video_vid 
 												join t_e_realisateur_rea on (t_e_video_vid.rea_id=t_e_realisateur_rea.rea_id) 
 												",
@@ -25,7 +28,7 @@ class ResearchController extends Controller{
 	public function index(){
 		if (isset(parameters()["typesearch"]) && isset(parameters()["keyword"]))
 		{
-			print_r(parameters());
+			// print_r(parameters());
 			$sql="";
 			if(!empty(parameters()["keyword"])&& parameters()["keyword"]!="")
 			{

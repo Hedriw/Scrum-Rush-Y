@@ -5,6 +5,7 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css" />
 	<link rel="stylesheet" type="text/css" href="./css/animate.css" />
+	<link rel="stylesheet" type="text/css" href="css/mui.css" />
 </head>
 <body>
 	<main>
@@ -18,7 +19,7 @@
 	echo $connectData;
 	?>
 
-	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research class="button">Rechercher une vidéo</a>
+	<a href=http://srv-tpinfo/G246/Scrum-Rush-Y/?r=research class="mui-btn mui-btn--primary">Rechercher une vidéo</a>
 	<br>
 	<br>
 

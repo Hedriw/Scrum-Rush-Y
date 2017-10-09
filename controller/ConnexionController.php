@@ -72,23 +72,50 @@ class ConnexionController extends Controller{
 	public function modification()
 	{
 		$bool=0;
-		if(parameters()["submit"]=="Modifier")
+		if(isset(parameters()["submit"]))
 		{
-			
+			if(parameters()["submit"]=="Modifier")
+		{
 			$sql="select adr_id from t_e_adresse_adr where ach_id='".$_SESSION['user_session_id']."'";
 			$st=db()->prepare($sql);
-			$row=$st->execute();
-			if($row !=null)
+			if($st->execute())
 			{
+				$row=$st->fetch(PDO::FETCH_ASSOC);
 				if(preg_match("/^[0]{1}[0-9]{9}$/",parameters()["fixe"])&&preg_match("/^[0]{1}[0-9]{9}$/",parameters()["portable"])) 
 				{
 					$bool=1;
-					$adresse=$st->fetch(PDO::FETCH_ASSOC);
-					$address=new Address($adresse['adr_id']);
-					$user = new User($_SESSION['user_session_id']);
+					$address = new Address($row["adr_id"]);
+					$user = new User($address->ach_id->ach_id);
 					$user->ach_pseudo = parameters()["pseudo"];
 					$user->ach_mel = parameters()["email"];
-					$user->ach_civilite = parameters()["genre"];
+					$user->ach_civilite =parameters()["genre"];
+					$user->ach_nom = parameters()["nom"];
+					$user->ach_prenom = parameters()["prenom"];
+					$user->ach_telfixe= parameters()["fixe"];
+					$user->ach_telportable= parameters()["portable"];
+					$user->mag_id=intval(parameters()["magasin"]);
+					
+					$address->adr_rue=parameters()["adresse"];
+					$address->adr_complementrue=parameters()["cr"];
+					$address->adr_cp=parameters()["cp"];
+					$address->adr_ville=parameters()["ville"];
+					$address->pay_id=parameters()["pays"];
+					
+					$data="votre compte a bien été modifié";
+					$_SESSION['user_session_civ'] = parameters()["genre"];
+					$_SESSION['user_session_nom'] = parameters()["nom"];
+					$_SESSION['user_session_prenom'] = parameters()["prenom"];
+					$this->render("valmodification",$data);	
+				}
+				else if(preg_match("/^[0]{1}[0-9]{9}$/",parameters()["fixe"])&&empty(parameters()["portable"])||parameters()["portable"]==" ")
+				{
+					$bool=1;
+					$address = new Address($row["adr_id"]);
+					$user = new User($address->ach_id->ach_id);
+					
+					$user->ach_pseudo = parameters()["pseudo"];
+					$user->ach_mel = parameters()["email"];
+					$user->ach_civilite =parameters()["genre"];
 					$user->ach_nom = parameters()["nom"];
 					$user->ach_prenom = parameters()["prenom"];
 					$user->ach_telfixe= parameters()["fixe"];
@@ -101,10 +128,40 @@ class ConnexionController extends Controller{
 					$address->adr_cp=parameters()["cp"];
 					$address->adr_ville=parameters()["ville"];
 					$address->pay_id=parameters()["pays"];
-					$data="votre compte a bien été modifié";
-					$this->render("valmodification",$data);	
-				}
-				else
+					
+					$data="Votre compte a bien été modifié";
+					$_SESSION['user_session_civ'] = parameters()["genre"];
+					$_SESSION['user_session_nom'] = parameters()["nom"];
+					$_SESSION['user_session_prenom'] = parameters()["prenom"];
+					$this->render("valmodification",$data);
+				}else if(preg_match("/^[0]{1}[0-9]{9}$/",parameters()["portable"])&&(empty(parameters()["fixe"])||parameters()["fixe"]==" "))
+				{
+					$bool=1;
+					$address = new Address($row["adr_id"]);
+					$user = new User($address->ach_id->ach_id);
+					$user->ach_pseudo = parameters()["pseudo"];
+					$user->ach_mel = parameters()["email"];
+					$user->ach_civilite =parameters()["genre"];
+					$user->ach_nom = parameters()["nom"];
+					$user->ach_prenom = parameters()["prenom"];
+					$user->ach_telfixe= parameters()["fixe"];
+					$user->ach_telportable= parameters()["portable"];
+					$user->mag_id=intval(parameters()["magasin"]);
+					
+					$address->ach_id=$user->ach_id;
+					$address->adr_rue=parameters()["adresse"];
+					$address->adr_complementrue=parameters()["cr"];
+					$address->adr_cp=parameters()["cp"];
+					$address->adr_ville=parameters()["ville"];
+					$address->pay_id=parameters()["pays"]; 
+					
+					$data="Votre compte a bien été modifié";
+					$_SESSION['user_session_civ'] = parameters()["genre"];
+					$_SESSION['user_session_nom'] = parameters()["nom"];
+					$_SESSION['user_session_prenom'] = parameters()["prenom"];
+					$this->render("valmodification",$data);
+					
+				}else
 				{
 					$data["error"]="Le numéro de téléphone n'est pas valide";
 				}
@@ -119,6 +176,8 @@ class ConnexionController extends Controller{
 		{
 			header("Location:.");
 		}
+		}
+		
 		if($bool==0)
 		{
 			$_SESSION['user_session_id'];
